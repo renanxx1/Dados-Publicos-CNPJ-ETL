@@ -10,9 +10,9 @@ from airflow.decorators import dag, task
 from airflow.models.baseoperator import chain
 
 
-urls_empr = ['http://200.152.38.155/CNPJ/K3241.K03200Y0.D20212.EMPRECSV.zip']
-urls_esta = ['http://200.152.38.155/CNPJ/K3241.K03200Y0.D20212.ESTABELE.zip']
-urls_soci = ['http://200.152.38.155/CNPJ/K3241.K03200Y0.D20212.SOCIOCSV.zip']
+urls_empresas = ['http://200.152.38.155/CNPJ/K3241.K03200Y0.D20212.EMPRECSV.zip']
+urls_estabelecimentos = ['http://200.152.38.155/CNPJ/K3241.K03200Y0.D20212.ESTABELE.zip']
+urls_socios = ['http://200.152.38.155/CNPJ/K3241.K03200Y0.D20212.SOCIOCSV.zip']
 
 raw_path_empresas = 'raw/empresas/'
 standardized_path_empresas = 'standardized/empresas/'
@@ -178,9 +178,9 @@ def ETL():
         print('Database loaded!')
         
         
-    extract_data(urls_empr, raw_path_empresas) >> process_raw_data(raw_path_empresas, standardized_path_empresas) >> process_standardized_empresas(standardized_path_empresas, conformed_path_empresas) >> load_database(conformed_path_empresas, 'empresas')
-    extract_data(urls_esta, raw_path_estabelecimentos) >> process_raw_data(raw_path_estabelecimentos, standardized_path_estabelecimentos) >> process_standardized_estabelecimentos(standardized_path_estabelecimentos, conformed_path_estabelecimentos) >> load_database(conformed_path_estabelecimentos, 'estabelecimentos')
-    extract_data(urls_soci, raw_path_socios) >> process_raw_data(raw_path_socios, standardized_path_socios) >> process_standardized_socios(standardized_path_socios, conformed_path_socios) >> load_database(conformed_path_socios, 'socios')
+    extract_data(urls_empresas, raw_path_empresas) >> process_raw_data(raw_path_empresas, standardized_path_empresas) >> process_standardized_empresas(standardized_path_empresas, conformed_path_empresas) >> load_database(conformed_path_empresas, 'empresas')
+    extract_data(urls_estabelecimentos, raw_path_estabelecimentos) >> process_raw_data(raw_path_estabelecimentos, standardized_path_estabelecimentos) >> process_standardized_estabelecimentos(standardized_path_estabelecimentos, conformed_path_estabelecimentos) >> load_database(conformed_path_estabelecimentos, 'estabelecimentos')
+    extract_data(urls_socios, raw_path_socios) >> process_raw_data(raw_path_socios, standardized_path_socios) >> process_standardized_socios(standardized_path_socios, conformed_path_socios) >> load_database(conformed_path_socios, 'socios')
         
 run = ETL()
 
