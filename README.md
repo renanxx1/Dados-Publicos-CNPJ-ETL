@@ -4,9 +4,9 @@ Coleta, processamento e armazenamento dos dados de empresas, socios e estabeleci
 
 
 #### Requisitos
-- Python 3.8
-- PostgreSQL 13
-- Airflow
+- Python 3.9
+- PostgreSQL 14
+- Airflow 2.0
 
 
 #### Fluxo:
